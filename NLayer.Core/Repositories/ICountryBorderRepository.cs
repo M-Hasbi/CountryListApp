@@ -2,7 +2,7 @@
 {
     public interface ICountryBorderRepository : IGenericRepository<CountryBorder>
     {
-        Task<List<CountryBorder>> GetCountryBordersWitCountry();
+        Task<List<CountryBorder>> GetCountryBordersWithCountry();
 
 
     }

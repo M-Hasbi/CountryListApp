@@ -11,8 +11,8 @@ namespace NLayer.Repository
         {
         }
 
-        public DbSet<Country> Categories { get; set; }
-        public DbSet<CountryBorder> Products { get; set; }
+        public DbSet<Country> Countries { get; set; }
+        public DbSet<CountryBorder> CountryBorders { get; set; }
 
         public override int SaveChanges()
         {

@@ -9,8 +9,7 @@ namespace NLayer.Service.Mapping
         public MapProfile()
         {
             CreateMap<CountryBorder, CountryBorderDto>().ReverseMap();
-            CreateMap<Country, CategoryDto>().ReverseMap();
-            CreateMap<ProductFeature, ProductFeatureDto>().ReverseMap();
+            CreateMap<Country, CountryDto>().ReverseMap();
             CreateMap<CountryBorderUpdateDto, CountryBorder>();
             CreateMap<CountryBorder, CountryBorderWithCountryDto>();
             CreateMap<Country, CountryWithCountryBordersDto>();

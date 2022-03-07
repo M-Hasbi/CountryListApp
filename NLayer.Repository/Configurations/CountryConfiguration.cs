@@ -4,7 +4,7 @@ using NLayer.Core;
 
 namespace NLayer.Repository.Configurations
 {
-    internal class CategoryConfiguration : IEntityTypeConfiguration<Country>
+    internal class CountryConfiguration : IEntityTypeConfiguration<Country>
     {
         public void Configure(EntityTypeBuilder<Country> builder)
         {
@@ -12,7 +12,7 @@ namespace NLayer.Repository.Configurations
             builder.Property(x => x.Id).UseIdentityColumn();
             builder.Property(x => x.Name).IsRequired().HasMaxLength(50);
 
-            builder.ToTable("Categories");
+            builder.ToTable("Countries");
 
 
 
