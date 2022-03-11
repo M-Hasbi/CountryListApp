@@ -10,7 +10,7 @@ namespace NLayer.Repository.Repositories
         {
         }
 
-        public async Task<List<CountryBorder>> GetCountryBordersWitCountry()
+        public async Task<List<CountryBorder>> GetCountryBordersWithCountry()
         {
 
             return await _context.CountryBorders.Include(x => x.Country).ToListAsync();

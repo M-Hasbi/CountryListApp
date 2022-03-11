@@ -13,7 +13,7 @@ using System.Reflection;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllersWithViews().AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContaining<ProductDtoValidator>()); ;
+builder.Services.AddControllersWithViews().AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContaining<CountryBorderDtoValidator>());
 builder.Services.AddAutoMapper(typeof(MapProfile));
 builder.Services.AddDbContext<AppDbContext>(x =>
 {
@@ -23,13 +23,13 @@ builder.Services.AddDbContext<AppDbContext>(x =>
     });
 });
 
-builder.Services.AddHttpClient<ProductApiService>(opt =>
+builder.Services.AddHttpClient<CountryBorderApiService>(opt =>
 {
 
     opt.BaseAddress = new Uri(builder.Configuration["BaseUrl"]);
 
 });
-builder.Services.AddHttpClient<CategoryApiService>(opt =>
+builder.Services.AddHttpClient<CountryApiService>(opt =>
 {
 
     opt.BaseAddress = new Uri(builder.Configuration["BaseUrl"]);

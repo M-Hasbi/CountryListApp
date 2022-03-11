@@ -1,8 +1,11 @@
-﻿namespace NLayer.Core
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace NLayer.Core
 {
+    
     public class CountryBorder : BaseEntity
     {
-        public List<string> Names { get; set; }
+        public ICollection<string> Names { get; set; } 
 
         public int CountryId { get; set; }
 

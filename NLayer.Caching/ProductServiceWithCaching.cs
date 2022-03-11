@@ -13,7 +13,7 @@ namespace NLayer.Caching
 {
     public class ProductServiceWithCaching : ICountryBorderService
     {
-        private const string CacheProductKey = "productsCache";
+        private const string CacheProductKey = "countryBordersCache";
         private readonly IMapper _mapper;
         private readonly IMemoryCache _memoryCache;
         private readonly ICountryBorderRepository _repository;
@@ -28,7 +28,7 @@ namespace NLayer.Caching
 
             if (!_memoryCache.TryGetValue(CacheProductKey, out _))
             {
-                _memoryCache.Set(CacheProductKey, _repository.GetProductsWitCategory().Result);
+                _memoryCache.Set(CacheProductKey, _repository.GetCountryBordersWithCountry().Result);
             }
 
 
@@ -74,13 +74,13 @@ namespace NLayer.Caching
             return Task.FromResult(product);
         }
 
-        public Task<CustomResponseDto<List<CountryBorderWithCountryDto>>> GetProductsWithCategory()
+        public Task<CustomResponseDto<List<CountryBorderWithCountryDto>>> GetCountryBordersWithCountry()
         {
             var products = _memoryCache.Get<IEnumerable<CountryBorder>>(CacheProductKey);
 
             var productsWithCategoryDto = _mapper.Map<List<CountryBorderWithCountryDto>>(products);
 
-            return Task.FromResult(CustomResponseDto<List<CountryBorderWithCountryDto>>.Success(200,productsWithCategoryDto));
+            return Task.FromResult(CustomResponseDto<List<CountryBorderWithCountryDto>>.Success(200, productsWithCategoryDto));
         }
 
         public async Task RemoveAsync(CountryBorder entity)

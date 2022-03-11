@@ -8,8 +8,6 @@ namespace NLayer.Repository.Seeds
     {
         public void Configure(EntityTypeBuilder<Country> builder)
         {
-
-
             builder.HasData(
                 new Country { Id = 1, Name = "CAN" },
                 new Country { Id = 2, Name = "MEX" },

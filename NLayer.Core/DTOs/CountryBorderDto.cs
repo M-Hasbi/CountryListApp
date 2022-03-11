@@ -4,7 +4,7 @@
     {
 
 
-        public List<string> Names { get; set; }
+        public ICollection<string> Names { get; set; }
 
         public int CountryId { get; set; }
     }
