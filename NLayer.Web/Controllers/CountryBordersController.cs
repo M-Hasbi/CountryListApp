@@ -54,7 +54,7 @@ namespace NLayer.Web.Controllers
 
 
 
-            ViewBag.countries = new SelectList(countriesDto, "Id", "Name");
+            ViewBag.countries = new SelectList(countriesDto, "Id", "Name",countryBorderDto.CountryId);
             return View();
         }
 

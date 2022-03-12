@@ -30,5 +30,25 @@ namespace NLayer.Web.Services
 
 
         }
+        public async Task<CountryDto> GetByIdAsync(int id)
+        {
+
+            CustomResponseDto<CountryDto> response = await _httpClient.GetFromJsonAsync<CustomResponseDto<CountryDto>>($"countries/{id}");
+            return response.Data;
+
+
+        }
+        public async Task<bool> UpdateAsync(CountryDto newProduct)
+        {
+            HttpResponseMessage response = await _httpClient.PutAsJsonAsync("countries", newProduct);
+
+            return response.IsSuccessStatusCode;
+        }
+        public async Task<bool> RemoveAsync(int id)
+        {
+            HttpResponseMessage response = await _httpClient.DeleteAsync($"countries/{id}");
+
+            return response.IsSuccessStatusCode;
+        }
     }
 }
