@@ -8,9 +8,9 @@ namespace NLayer.Service.Validations
         public CountryBorderDtoValidator()
         {
 
-            RuleFor(x => x.Names).NotNull().WithMessage("{PropertyName} is required").NotEmpty().WithMessage("{PropertyName} is required");
+            RuleFor(x => x.Name1).NotNull().WithMessage("{PropertyName} is required").NotEmpty().WithMessage("{PropertyName} is required");
 
-            
+
         }
 
 

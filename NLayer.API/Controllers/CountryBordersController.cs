@@ -16,7 +16,7 @@ namespace NLayer.API.Controllers
 
         public CountryBordersController(IMapper mapper, ICountryBorderService countryBorderService)
         {
-          
+
             _mapper = mapper;
             _service = countryBorderService;
         }
@@ -34,25 +34,25 @@ namespace NLayer.API.Controllers
 
 
 
-        /// GET api/countryborders
+        /// GET api/CountryBorders
         [HttpGet]
         public async Task<IActionResult> All()
         {
-            var countryBorders = await _service.GetAllAsync();
-            var countryBordersDtos = _mapper.Map<List<CountryBorderDto>>(countryBorders.ToList());
+            IEnumerable<CountryBorder> countryBorders = await _service.GetAllAsync();
+            List<CountryBorderDto> countryBordersDtos = _mapper.Map<List<CountryBorderDto>>(countryBorders.ToList());
             return CreateActionResult(CustomResponseDto<List<CountryBorderDto>>.Success(200, countryBordersDtos));
         }
 
-       
-    [ServiceFilter(typeof(NotFoundFilter<CountryBorder>))]
-        // GET /api/countryborders/5
+
+        [ServiceFilter(typeof(NotFoundFilter<CountryBorder>))]
+        // GET /apiCountryBorders/5
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
 
-            
-            var countryBorder = await _service.GetByIdAsync(id);
-            var countryBordersDto = _mapper.Map<CountryBorderDto>(countryBorder);
+
+            CountryBorder countryBorder = await _service.GetByIdAsync(id);
+            CountryBorderDto countryBordersDto = _mapper.Map<CountryBorderDto>(countryBorder);
             return CreateActionResult(CustomResponseDto<CountryBorderDto>.Success(200, countryBordersDto));
         }
 
@@ -61,8 +61,8 @@ namespace NLayer.API.Controllers
         [HttpPost]
         public async Task<IActionResult> Save(CountryBorderDto countryBorderDto)
         {
-            var countryBorder = await _service.AddAsync(_mapper.Map<CountryBorder>(countryBorderDto));
-            var countryBordersDto = _mapper.Map<CountryBorderDto>(countryBorder);
+            CountryBorder countryBorder = await _service.AddAsync(_mapper.Map<CountryBorder>(countryBorderDto));
+            CountryBorderDto countryBordersDto = _mapper.Map<CountryBorderDto>(countryBorder);
             return CreateActionResult(CustomResponseDto<CountryBorderDto>.Success(201, countryBordersDto));
         }
 
@@ -70,22 +70,22 @@ namespace NLayer.API.Controllers
         [HttpPut]
         public async Task<IActionResult> Update(CountryBorderUpdateDto countryBorders)
         {
-             await _service.UpdateAsync(_mapper.Map<CountryBorder>(countryBorders));
-          
+            await _service.UpdateAsync(_mapper.Map<CountryBorder>(countryBorders));
+
             return CreateActionResult(CustomResponseDto<NoContentDto>.Success(204));
         }
 
-        // DELETE api/countryborders/5
+        // DELETE api/CountryBorders/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> Remove(int id)
         {
-            var countryBorders = await _service.GetByIdAsync(id);
+            CountryBorder countryBorders = await _service.GetByIdAsync(id);
 
 
-         
+
 
             await _service.RemoveAsync(countryBorders);
-          
+
             return CreateActionResult(CustomResponseDto<NoContentDto>.Success(204));
         }
 

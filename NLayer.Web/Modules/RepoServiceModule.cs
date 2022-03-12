@@ -16,7 +16,7 @@ namespace NLayer.Web.Modules
 
         protected override void Load(ContainerBuilder builder)
         {
-          
+
             builder.RegisterGeneric(typeof(GenericRepository<>)).As(typeof(IGenericRepository<>)).InstancePerLifetimeScope();
             builder.RegisterGeneric(typeof(Service<>)).As(typeof(IService<>)).InstancePerLifetimeScope();
 
@@ -24,9 +24,9 @@ namespace NLayer.Web.Modules
 
 
 
-            var apiAssembly = Assembly.GetExecutingAssembly();
-            var repoAssembly = Assembly.GetAssembly(typeof(AppDbContext));
-            var serviceAssembly = Assembly.GetAssembly(typeof(MapProfile));
+            Assembly apiAssembly = Assembly.GetExecutingAssembly();
+            Assembly repoAssembly = Assembly.GetAssembly(typeof(AppDbContext));
+            Assembly serviceAssembly = Assembly.GetAssembly(typeof(MapProfile));
 
             builder.RegisterAssemblyTypes(apiAssembly, repoAssembly, serviceAssembly).Where(x => x.Name.EndsWith("Repository")).AsImplementedInterfaces().InstancePerLifetimeScope();
 

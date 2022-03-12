@@ -6,7 +6,7 @@ using NLayer.Core.Services;
 
 namespace NLayer.Web
 {
-    public class NotFoundFilter<T>:IAsyncActionFilter where T : BaseEntity
+    public class NotFoundFilter<T> : IAsyncActionFilter where T : BaseEntity
     {
 
         private readonly IService<T> _service;
@@ -18,7 +18,7 @@ namespace NLayer.Web
 
         public async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
         {
-            var idValue = context.ActionArguments.Values.FirstOrDefault();
+            object idValue = context.ActionArguments.Values.FirstOrDefault();
 
             if (idValue == null)
             {
@@ -26,8 +26,8 @@ namespace NLayer.Web
                 return;
             }
 
-            var id = (int)idValue;
-            var anyEntity = await _service.AnyAsync(x => x.Id == id);
+            int id = (int)idValue;
+            bool anyEntity = await _service.AnyAsync(x => x.Id == id);
 
             if (anyEntity)
             {
@@ -35,7 +35,7 @@ namespace NLayer.Web
                 return;
             }
 
-            var errorViewModel = new ErrorViewModel();
+            ErrorViewModel errorViewModel = new ErrorViewModel();
             errorViewModel.Errors.Add($"{typeof(T).Name}({id}) not found");
 
             context.Result = new RedirectToActionResult("Error", "Home", errorViewModel);

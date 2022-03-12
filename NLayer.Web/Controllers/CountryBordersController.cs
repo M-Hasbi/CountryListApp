@@ -26,11 +26,11 @@ namespace NLayer.Web.Controllers
 
         public async Task<IActionResult> Save()
         {
-            var countriesDto = await _countryApiService.GetAllAsync();
+            List<CountryDto> countriesDto = await _countryApiService.GetAllAsync();
 
-           
 
-            ViewBag.categories = new SelectList(countriesDto, "Id", "Name");
+
+            ViewBag.countries = new SelectList(countriesDto, "Id", "Name");
 
             return View();
         }
@@ -46,15 +46,15 @@ namespace NLayer.Web.Controllers
 
                 await _countryBorderApiService.SaveAsync(countryBorderDto);
 
-               
+
                 return RedirectToAction(nameof(Index));
             }
 
-            var countriesDto = await _countryApiService.GetAllAsync();
+            List<CountryDto> countriesDto = await _countryApiService.GetAllAsync();
 
-           
 
-            ViewBag.categories = new SelectList(countriesDto, "Id", "Name");
+
+            ViewBag.countries = new SelectList(countriesDto, "Id", "Name");
             return View();
         }
 
@@ -62,14 +62,14 @@ namespace NLayer.Web.Controllers
         [ServiceFilter(typeof(NotFoundFilter<CountryBorder>))]
         public async Task<IActionResult> Update(int id)
         {
-            var countryBorder = await _countryBorderApiService.GetByIdAsync(id);
+            CountryBorderDto countryBorder = await _countryBorderApiService.GetByIdAsync(id);
 
 
-            var countriesDto = await _countryApiService.GetAllAsync();
+            List<CountryDto> countriesDto = await _countryApiService.GetAllAsync();
 
-            
 
-            ViewBag.countries = new SelectList(countriesDto, "Id", "Name",countryBorder.CountryId);
+
+            ViewBag.countries = new SelectList(countriesDto, "Id", "Name", countryBorder.CountryId);
 
             return View(countryBorder);
 
@@ -77,27 +77,27 @@ namespace NLayer.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> Update(CountryBorderDto countryBorderDto)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
 
-                await _countryBorderApiService.UpdateAsync(countryBorderDto); 
+                await _countryBorderApiService.UpdateAsync(countryBorderDto);
 
                 return RedirectToAction(nameof(Index));
 
             }
 
-            var countriesDto = await  _countryApiService.GetAllAsync();
+            List<CountryDto> countriesDto = await _countryApiService.GetAllAsync();
 
-         
 
-            ViewBag.countries = new SelectList(countriesDto, "Id", "Names", countryBorderDto.CountryId);
+
+            ViewBag.countries = new SelectList(countriesDto, "Id", "Name", countryBorderDto.CountryId);
 
             return View(countryBorderDto);
 
         }
 
 
-        public async Task<IActionResult>  Remove(int id)
+        public async Task<IActionResult> Remove(int id)
         {
             await _countryBorderApiService.RemoveAsync(id);
             return RedirectToAction(nameof(Index));

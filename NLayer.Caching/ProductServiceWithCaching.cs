@@ -58,13 +58,13 @@ namespace NLayer.Caching
         public Task<IEnumerable<CountryBorder>> GetAllAsync()
         {
 
-            var products = _memoryCache.Get<IEnumerable<CountryBorder>>(CacheProductKey);
+            IEnumerable<CountryBorder>? products = _memoryCache.Get<IEnumerable<CountryBorder>>(CacheProductKey);
             return Task.FromResult(products);
         }
 
         public Task<CountryBorder> GetByIdAsync(int id)
         {
-            var product = _memoryCache.Get<List<CountryBorder>>(CacheProductKey).FirstOrDefault(x => x.Id == id);
+            CountryBorder? product = _memoryCache.Get<List<CountryBorder>>(CacheProductKey).FirstOrDefault(x => x.Id == id);
 
             if (product == null)
             {
@@ -76,9 +76,9 @@ namespace NLayer.Caching
 
         public Task<CustomResponseDto<List<CountryBorderWithCountryDto>>> GetCountryBordersWithCountry()
         {
-            var products = _memoryCache.Get<IEnumerable<CountryBorder>>(CacheProductKey);
+            IEnumerable<CountryBorder>? products = _memoryCache.Get<IEnumerable<CountryBorder>>(CacheProductKey);
 
-            var productsWithCategoryDto = _mapper.Map<List<CountryBorderWithCountryDto>>(products);
+            List<CountryBorderWithCountryDto>? productsWithCategoryDto = _mapper.Map<List<CountryBorderWithCountryDto>>(products);
 
             return Task.FromResult(CustomResponseDto<List<CountryBorderWithCountryDto>>.Success(200, productsWithCategoryDto));
         }

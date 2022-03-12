@@ -4,7 +4,7 @@ using NLayer.Core;
 
 namespace NLayer.Repository.Seeds
 {
-    internal class CountrySeed : IEntityTypeConfiguration<Country>
+    public class CountrySeed : IEntityTypeConfiguration<Country>
     {
         public void Configure(EntityTypeBuilder<Country> builder)
         {

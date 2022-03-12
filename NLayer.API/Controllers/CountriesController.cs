@@ -20,12 +20,12 @@ namespace NLayer.API.Controllers
         public async Task<IActionResult> GetAll()
         {
 
-            var countries = await _countryService.GetAllAsync();
+            IEnumerable<Core.Country> countries = await _countryService.GetAllAsync();
 
-            var countriesDto = _mapper.Map<List<CountryDto>>(countries.ToList());
+            List<CountryDto> countriesDto = _mapper.Map<List<CountryDto>>(countries.ToList());
 
             return CreateActionResult(CustomResponseDto<List<CountryDto>>.Success(200, countriesDto));
-        
+
         }
 
 
@@ -33,9 +33,9 @@ namespace NLayer.API.Controllers
         [HttpGet("[action]/{countryId}")]
         public async Task<IActionResult> GetSingleCountryByIdWithCountryBorders(int countryId)
         {
-            
+
             return CreateActionResult(await _countryService.GetSingleCountryByIdWithCountryBordersAsync(countryId));
-          
+
         }
 
     }

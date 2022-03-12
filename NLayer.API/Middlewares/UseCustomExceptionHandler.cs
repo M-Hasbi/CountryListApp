@@ -17,18 +17,18 @@ namespace NLayer.API.Middlewares
                 {
                     context.Response.ContentType = "application/json";
 
-                    var exceptionFeature = context.Features.Get<IExceptionHandlerFeature>();
+                    IExceptionHandlerFeature exceptionFeature = context.Features.Get<IExceptionHandlerFeature>();
 
-                    var statusCode = exceptionFeature.Error switch
+                    int statusCode = exceptionFeature.Error switch
                     {
                         ClientSideException => 400,
-                        NotFoundExcepiton=> 404,
+                        NotFoundExcepiton => 404,
                         _ => 500
                     };
                     context.Response.StatusCode = statusCode;
 
 
-                    var response = CustomResponseDto<NoContentDto>.Fail(statusCode, exceptionFeature.Error.Message);
+                    CustomResponseDto<NoContentDto> response = CustomResponseDto<NoContentDto>.Fail(statusCode, exceptionFeature.Error.Message);
 
 
                     await context.Response.WriteAsync(JsonSerializer.Serialize(response));

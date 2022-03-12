@@ -4,7 +4,7 @@ using NLayer.Core;
 
 namespace NLayer.Repository.Seeds
 {
-    internal class CountryBorderSeed : IEntityTypeConfiguration<CountryBorder>
+    public class CountryBorderSeed : IEntityTypeConfiguration<CountryBorder>
     {
         public void Configure(EntityTypeBuilder<CountryBorder> builder)
         {
@@ -12,7 +12,8 @@ namespace NLayer.Repository.Seeds
             {
                 Id = 1,
                 CountryId = 1,
-                Names = { "USA", "CAN" },
+                Name1 = "USA",
+                Name2 = "CAN",
                 CreatedDate = DateTime.Now
 
 
@@ -21,7 +22,8 @@ namespace NLayer.Repository.Seeds
             {
                 Id = 2,
                 CountryId = 2,
-                Names = { "USA", "MEX" },
+                Name1 = "USA",
+                Name2 = "MEX",
                 CreatedDate = DateTime.Now
 
 
@@ -30,7 +32,9 @@ namespace NLayer.Repository.Seeds
              {
                  Id = 3,
                  CountryId = 3,
-                 Names = { "USA", "MEX", "BLZ" },
+                 Name1 = "USA",
+                 Name2 = "MEX",
+                 Name3 = "BLZ",
                  CreatedDate = DateTime.Now
 
 
@@ -39,7 +43,9 @@ namespace NLayer.Repository.Seeds
                {
                    Id = 4,
                    CountryId = 4,
-                   Names = { "USA", "MEX", "GTM"},
+                   Name1 = "USA",
+                   Name2 = "MEX",
+                   Name3 = "GTM",
                    CreatedDate = DateTime.Now
 
 
@@ -48,7 +54,10 @@ namespace NLayer.Repository.Seeds
                {
                    Id = 5,
                    CountryId = 5,
-                   Names = { "USA", "MEX", "GTM" ,"SLV"},
+                   Name1 = "USA",
+                   Name2 = "MEX",
+                   Name3 = "GTM",
+                   Name4 = "SLV",
                    CreatedDate = DateTime.Now
 
 
@@ -57,7 +66,10 @@ namespace NLayer.Repository.Seeds
                {
                    Id = 6,
                    CountryId = 6,
-                   Names = { "USA", "MEX", "GTM","HND" },
+                   Name1 = "USA",
+                   Name2 = "MEX",
+                   Name3 = "GTM",
+                   Name4 = "HND",
                    CreatedDate = DateTime.Now
 
 
@@ -66,7 +78,11 @@ namespace NLayer.Repository.Seeds
                {
                    Id = 7,
                    CountryId = 7,
-                   Names = { "USA", "MEX", "GTM", "HND","NIC" },
+                   Name1 = "USA",
+                   Name2 = "MEX",
+                   Name3 = "GTM",
+                   Name4 = "HND",
+                   Name5 = "NIC",
                    CreatedDate = DateTime.Now
 
 
@@ -75,7 +91,12 @@ namespace NLayer.Repository.Seeds
                {
                    Id = 8,
                    CountryId = 8,
-                   Names = { "USA", "MEX", "GTM", "HND", "NIC","CRI" },
+                   Name1 = "USA",
+                   Name2 = "MEX",
+                   Name3 = "GTM",
+                   Name4 = "HND",
+                   Name5 = "NIC",
+                   Name6 = "CRI",
                    CreatedDate = DateTime.Now
 
 
@@ -84,7 +105,13 @@ namespace NLayer.Repository.Seeds
                {
                    Id = 9,
                    CountryId = 9,
-                   Names = { "USA", "MEX", "GTM", "HND", "NIC", "CRI","PAN" },
+                   Name1 = "USA",
+                   Name2 = "MEX",
+                   Name3 = "GTM",
+                   Name4 = "HND",
+                   Name5 = "NIC",
+                   Name6 = "CRI",
+                   Name7 = "PAN",
                    CreatedDate = DateTime.Now
 
 

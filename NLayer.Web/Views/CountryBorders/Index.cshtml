@@ -4,12 +4,20 @@
     ViewData["Title"] = "Index";
 }
 @model List<CountryBorderWithCountryDto>
-<a class="btn btn-primary" asp-controller="CountryBorders" asp-action="Save">Save CountryBorders</a>
+<a class="btn btn-primary" asp-controller="CountryBorders" asp-action="Save">Save CountryBorder</a>
     <table class="table table-striped">
         <thead>
             <tr>
             <td>Id</td>
-            <td>Name</td>
+            <td>Name1</td>
+            <td>Name2</td>
+            <td>Name3</td>
+            <td>Name4</td>
+            <td>Name5</td>
+            <td>Name6</td>
+            <td>Name7</td>
+            <td>Name8</td>
+            <td>Name9</td>
             <td>Country</td>
             <td>CreatedDate</td>
             <td>Actions</td>
@@ -21,7 +29,15 @@
             {
                 <tr>
                <td>@item.Id</td>
-                <td>@item.Names</td>
+                <td>@item.Name1</td>
+                <td>@item.Name2</td>
+                <td>@item.Name3</td>
+                <td>@item.Name4</td>
+                <td>@item.Name5</td>
+                <td>@item.Name6</td>
+                <td>@item.Name7</td>
+                <td>@item.Name8</td>
+                <td>@item.Name9</td>
                    <td>@item.Country.Name</td>
                     <td>@item.CreatedDate</td>
                     <td>

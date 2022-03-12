@@ -10,7 +10,15 @@ namespace NLayer.Repository.Configurations
         {
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Id).UseIdentityColumn();
-            builder.Property(x => x.Names).IsRequired().HasMaxLength(200);
+            builder.Property(x => x.Name1).IsRequired().HasMaxLength(200);
+            builder.Property(x => x.Name2).HasMaxLength(200);
+            builder.Property(x => x.Name3).HasMaxLength(200);
+            builder.Property(x => x.Name4).HasMaxLength(200);
+            builder.Property(x => x.Name5).HasMaxLength(200);
+            builder.Property(x => x.Name6).HasMaxLength(200);
+            builder.Property(x => x.Name7).HasMaxLength(200);
+            builder.Property(x => x.Name8).HasMaxLength(200);
+            builder.Property(x => x.Name9).HasMaxLength(200);
 
             builder.ToTable("CountryBorders");
 

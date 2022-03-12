@@ -2,7 +2,6 @@
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using NLayer.Core;
 using System.Reflection;
-using System.Text.Json;
 
 namespace NLayer.Repository
 {
@@ -18,7 +17,7 @@ namespace NLayer.Repository
 
         public override int SaveChanges()
         {
-            foreach (var item in ChangeTracker.Entries())
+            foreach (EntityEntry item in ChangeTracker.Entries())
             {
                 if (item.Entity is BaseEntity entityReference)
                 {
@@ -48,7 +47,7 @@ namespace NLayer.Repository
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
 
-            foreach (var item in ChangeTracker.Entries())
+            foreach (EntityEntry item in ChangeTracker.Entries())
             {
                 if (item.Entity is BaseEntity entityReference)
                 {
@@ -88,15 +87,15 @@ namespace NLayer.Repository
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
-            modelBuilder.Entity<CountryBorder>()
-    .Property(e => e.Names)
-    .HasConversion(
-        v => JsonSerializer.Serialize(v, (JsonSerializerOptions)null),
-        v => JsonSerializer.Deserialize<List<string>>(v, (JsonSerializerOptions)null),
-        new ValueComparer<ICollection<string>>(
-            (c1, c2) => c1.SequenceEqual(c2),
-            c => c.Aggregate(0, (a, v) => HashCode.Combine(a, v.GetHashCode())),
-            c => (ICollection<string>)c.ToList()));
+            //        modelBuilder.Entity<CountryBorder>()
+            //.Property(e => e.Names)
+            //.HasConversion(
+            //    v => JsonSerializer.Serialize(v, (JsonSerializerOptions)null),
+            //    v => JsonSerializer.Deserialize<List<string>>(v, (JsonSerializerOptions)null),
+            //    new ValueComparer<ICollection<string>>(
+            //        (c1, c2) => c1.SequenceEqual(c2),
+            //        c => c.Aggregate(0, (a, v) => HashCode.Combine(a, v.GetHashCode())),
+            //        c => (ICollection<string>)c.ToList()));
 
         }
     }

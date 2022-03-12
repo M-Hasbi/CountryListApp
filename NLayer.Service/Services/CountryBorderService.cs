@@ -20,9 +20,9 @@ namespace NLayer.Service.Services
 
         public async Task<CustomResponseDto<List<CountryBorderWithCountryDto>>> GetCountryBordersWithCountry()
         {
-            var borders = await _borderRepository.GetCountryBordersWithCountry();
+            List<CountryBorder> borders = await _borderRepository.GetCountryBordersWithCountry();
 
-            var bordersDto = _mapper.Map<List<CountryBorderWithCountryDto>>(borders);
+            List<CountryBorderWithCountryDto> bordersDto = _mapper.Map<List<CountryBorderWithCountryDto>>(borders);
             return CustomResponseDto<List<CountryBorderWithCountryDto>>.Success(200, bordersDto);
 
         }

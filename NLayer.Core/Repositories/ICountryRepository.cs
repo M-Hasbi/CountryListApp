@@ -6,6 +6,3 @@
         Task<Country> GetSingleCountryByIdWithCountryBordersAsync(int countryId);
     }
 }
-//TODO
-//Product = CountryBorder
-//Catagory = Country
