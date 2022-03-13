@@ -9,7 +9,7 @@
     <div class=col-md-6>
 
         <form asp-action="Save" method="post" asp-controller="CountryBorders">
-
+           
             <div class="form-group">
                 <label asp-for="Name1"></label>
                 <input asp-for="Name1" class="form-control" />
@@ -58,14 +58,10 @@
 
             <div class="form-group">
                 <label asp-for="CountryId"></label>
-                <input asp-for="CountryId" class="form-control" />
-                <span asp-validation-for="CountryId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CountryId"></label>
                 <select asp-for="CountryId" asp-items="ViewBag.countries" class="form-control" ></select>
                
             </div>
+           
 
             <div class="form-group">
 

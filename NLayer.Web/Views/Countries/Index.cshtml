@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+@model IEnumerable<CountryDto> 
+<h1>Countries</h1>
+<br /><a class="btn btn-primary mb-3" asp-action="Create">Add Country</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Transactions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>
+                                    <a class="btn btn-warning" asp-controller="Countries" asp-action="Update" asp-route-id="@item.Id">Update</a>
+                          <a class="btn btn-danger" asp-controller="Countries" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
