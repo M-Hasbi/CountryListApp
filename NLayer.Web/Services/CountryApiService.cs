@@ -17,8 +17,8 @@ namespace NLayer.Web.Services
 
         public async Task<CountryDto> AddAsync(CountryDto categoryDTO)
         {
-            var stringContent = new StringContent(JsonConvert.SerializeObject(categoryDTO), Encoding.UTF8, "application/json");
-            var response = await _httpClient.PostAsync("countries", stringContent);
+            StringContent stringContent = new StringContent(JsonConvert.SerializeObject(categoryDTO), Encoding.UTF8, "application/json");
+            HttpResponseMessage response = await _httpClient.PostAsync("countries", stringContent);
 
             if (response.IsSuccessStatusCode)
             {
@@ -56,11 +56,13 @@ namespace NLayer.Web.Services
 
 
         }
-        public async Task<bool> UpdateAsync(CountryDto newProduct)
+        public async Task<bool> UpdateAsync(CountryDto newCountry)
         {
-            HttpResponseMessage response = await _httpClient.PutAsJsonAsync("countries", newProduct);
+            HttpResponseMessage response = await _httpClient.PutAsJsonAsync("countries", newCountry);
 
             return response.IsSuccessStatusCode;
+
+
         }
         public async Task<bool> RemoveAsync(int id)
         {

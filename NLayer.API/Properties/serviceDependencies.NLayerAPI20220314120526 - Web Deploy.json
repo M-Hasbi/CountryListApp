@@ -1,0 +1,14 @@
+{
+  "dependencies": {
+    "apis1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.ApiManagement/service/NLayerAPIapi/apis/NLayerAPI",
+      "type": "apis.azure"
+    },
+    "mssql1": {
+      "ignored": "true",
+      "suggestion": "true",
+      "type": "mssql",
+      "connectionId": "ConnectionStrings:SqlConnection"
+    }
+  }
+}
