@@ -1,4 +1,6 @@
-﻿using NLayer.Core.DTOs;
+﻿using Newtonsoft.Json;
+using NLayer.Core.DTOs;
+using System.Text;
 
 namespace NLayer.Web.Services
 {
@@ -13,6 +15,22 @@ namespace NLayer.Web.Services
             _httpClient = httpClient;
         }
 
+        public async Task<CountryDto> AddAsync(CountryDto categoryDTO)
+        {
+            StringContent stringContent = new StringContent(JsonConvert.SerializeObject(categoryDTO), Encoding.UTF8, "application/json");
+            HttpResponseMessage response = await _httpClient.PostAsync("countries", stringContent);
+
+            if (response.IsSuccessStatusCode)
+            {
+                categoryDTO = JsonConvert.DeserializeObject<CountryDto>(await response.Content.ReadAsStringAsync());
+                return categoryDTO;
+            }
+            else
+            {
+                //do logg
+                return null;
+            }
+        }
         public async Task<List<CountryDto>> GetAllAsync()
         {
             CustomResponseDto<List<CountryDto>> response = await _httpClient.GetFromJsonAsync<CustomResponseDto<List<CountryDto>>>("countries");
@@ -38,11 +56,13 @@ namespace NLayer.Web.Services
 
 
         }
-        public async Task<bool> UpdateAsync(CountryDto newProduct)
+        public async Task<bool> UpdateAsync(CountryDto newCountry)
         {
-            HttpResponseMessage response = await _httpClient.PutAsJsonAsync("countries", newProduct);
+            HttpResponseMessage response = await _httpClient.PutAsJsonAsync("countries", newCountry);
 
             return response.IsSuccessStatusCode;
+
+
         }
         public async Task<bool> RemoveAsync(int id)
         {

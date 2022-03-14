@@ -11,7 +11,7 @@ using System.Linq.Expressions;
 
 namespace NLayer.Caching
 {
-    public class ProductServiceWithCaching : ICountryBorderService
+    public class CountryBorderServiceWithCaching : ICountryBorderService
     {
         private const string CacheProductKey = "countryBordersCache";
         private readonly IMapper _mapper;
@@ -19,7 +19,7 @@ namespace NLayer.Caching
         private readonly ICountryBorderRepository _repository;
         private readonly IUnitOfWork _unitOfWork;
 
-        public ProductServiceWithCaching(IUnitOfWork unitOfWork, ICountryBorderRepository repository, IMemoryCache memoryCache, IMapper mapper)
+        public CountryBorderServiceWithCaching(IUnitOfWork unitOfWork, ICountryBorderRepository repository, IMemoryCache memoryCache, IMapper mapper)
         {
             _unitOfWork = unitOfWork;
             _repository = repository;

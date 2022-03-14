@@ -11,7 +11,7 @@ using NLayer.Service.Mapping;
 using NLayer.Service.Validations;
 using System.Reflection;
 
-var builder = WebApplication.CreateBuilder(args);
+WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 // Configuration
 // Add services to the container.
 
@@ -49,7 +49,7 @@ builder.Host.ConfigureContainer<ContainerBuilder>(containerBuilder => containerB
 
 
 
-var app = builder.Build();
+WebApplication app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
